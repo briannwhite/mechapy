@@ -33,6 +33,7 @@ lbf = ureg.force_pound
 
 # pressure
 psi = ureg.psi
+ksi = ureg.kilopsi
 megapsi = ureg.megapsi
 psf = ureg.psi * 144
 newtons_per_square_meter = newton / meter ** 2
