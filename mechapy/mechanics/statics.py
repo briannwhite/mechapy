@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 
 from mechapy.units import ureg
+from mechapy.mechanics.mass_props import iyiz_rod, mass_rod
+from mechapy.mechanics.materials import Metal
 
 
 @ureg.check('[force]', '[area]')
@@ -280,6 +282,56 @@ class StressTensor(object):
                     arrowprops=dict(arrowstyle = '->', connectionstyle='arc3,rad=0')
                 )
             plt.show()
+
+class Shaft(object):
+    def __init__(self, diameter, length, material):
+        self.diameter = diameter
+        self.length = length
+        self.material = material
+
+    def mass(self):
+        density = self.material.density
+        mass = mass_rod(self.diameter, self.length, density)
+
+    def mass_moment_inertiz_iyiz(self):
+
+    def apply_transverse_end_load(self, magnitude):
+        pass
+
+    def apply_axial_load(self, magnitude):
+        pass
+
+    def apply_torsion_load(self, magniude):
+        pass
+
+    def remove_transverse_load(self):
+        pass
+
+    def remove_axial_load(self):
+        pass
+
+    def remove_torsion(self):
+        pass
+
+    def sigma_max(self):
+        pass
+
+    def tau_max(self):
+        pass
+
+    def tau_avg(self):
+        pass
+
+class RectangleBeam(object):
+    pass
+
+class ThinWallCylinder(object):
+    pass
+
+class ThickWallCylinder(object):
+    pass
+
+
 
 if __name__ == '__main__':
     st = StressTensor(100, 50, 10)
