@@ -1,0 +1,15 @@
+﻿spec,casting_type,uts_mpa,uts_ksi,yts_mpa,yts_ksi,elongation,corrosion_resistance,machining,weldability,anodized_appearance
+201-T4,Sand,365,53,215,31,20,,,,
+201-T6,Sand,485,70,435,63,7,,,,
+208-F,Sand,145,21,97,14,2.5,4,3,2,3
+295-T4,Sand,220,32,110,16,8.5,4,3,2,2
+295-T6,Sand,250,36,165,24,5,,,,
+355-T6,Sand,240,35,175,25,3,3,3,1,4
+355-T6,Permanent mold,290,42,190,27,4,,,,
+356-T6,Sand,230,33,165,24,3.5,2,3,1,4
+356-T6,Permanent mold,265,38,185,27,5,,,,
+A390-F,Sand,180,26,180,26,1,,,,
+A390-T6,Sand,280,40,280,40,1,,,,
+A390-F,Permanent mold,200,29,200,29,1,,,,
+A390-T6,Permanent mold,310,45,310,45,1,,,,
+520-T4,Sand,330,48,180,26,16,1,1,4,1
