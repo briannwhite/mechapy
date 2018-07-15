@@ -31,6 +31,10 @@ newton = ureg.newton
 kN = ureg.kilonewton
 lbf = ureg.force_pound
 
+# revolutions
+rpm = ureg.rpm
+hz = Hz = hertz =ureg.hertz
+
 # pressure
 psi = ureg.psi
 ksi = ureg.kilopsi
