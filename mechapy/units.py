@@ -17,17 +17,17 @@ yard = ureg.yard
 mile = ureg.mile
 
 # time
-sec = ureg.second
-minute = ureg.minute
-hour = ureg.hour
-day = ureg.day
+sec = seconds = second = ureg.second
+minute = minutes = min = ureg.minute
+hour = hours = ureg.hour
+day = days = ureg.day
 
 # mass
 lbm = ureg.pound
-kilogram = kg = ureg.kilogram
+kilogram = kg = kilgrams = ureg.kilogram
 
 # Force
-newton = ureg.newton
+newton = newtons = ureg.newton
 kN = ureg.kilonewton
 lbf = ureg.force_pound
 
@@ -54,7 +54,16 @@ sq_cm = ureg.centimeter ** 2
 sq_m = ureg.meter ** 2
 sq_km = ureg.kilometer ** 2
 
+# volume
+cu_ft = ureg.ft ** 3
+cu_in = ureg.inch ** 3
+cu_mm = ureg.mm ** 3
+cu_cm = ureg.cm ** 3
+cu_m = cu_meter = ureg.meter ** 3
+
 # energy
 btu = ureg.btu
-joule = ureg.joule
-kilojoule = ureg.kilojoule
+joule = joules = J = ureg.joule
+kilojoule = kilojoules = kJ = ureg.kilojoule
+ftlb = footpound = footpounds = ureg.foot * ureg.force_pound
+inlb = inchpound = inchpounds = ureg.inch * ureg.force_pound

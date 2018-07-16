@@ -1,14 +1,30 @@
-﻿aisi,structure,su_an,su_cw,su_ht,sy_an,sy_cw,sy_ht,el_an,el_cw,el_ht,izod_an,izod_cw,izod_ht,durability,machinability,weldability
-302,austentic,85,110,,35,75,,60,35,,110,90,,VG,P,G
-303,austentic,90,110,,35,80,,50,22,,85,35,,G,G,P
-304,austentic,85,110,,35,75,,60,55,,110,90,,VG,P,G
-310,austentic,95,,,45,,,50,,,110,,,G,P,G
-347,austentic,90,110,,35,65,,50,40,,110,,,VG,P,G
-384,austentic,75,,,35,,,55,,,,,,E,,
-410,martensitic,75,105,115,40,85,85,35,17,23,90,75,80,F,F-,F
-414,martensitic,115,130,160,90,110,125,20,15,17,50,,45,,F,F
-416,martensitic,75,100,110,40,85,85,30,13,18,70,20,25,P,G,P
-431,martensitic,125,130,165,95,110,125,20,15,17,50,,40,,P-,F
-440,martensitic,105,115,260,60,90,240,14,7,3,2,2,2,,VP,P
-430,ferritic,75,83,,43,63,,27,20,,,,,G,F-G,F
-446,ferritic,83,85,,53,70,,23,20,,2,,,P,F,F
+﻿aisi,structure,treatment,uts_ksi,sy_ksi,el,izod,durability,machinability,weldability
+302,austenitic,annealed,85,35,60,110,VG,P,G
+302,austenitic,cold worked,110,75,35,90,VG,P,G
+303,austenitic,annealed,90,35,50,85,G,G,P
+303,austenitic,cold worked,110,80,22,35,G,G,P
+304,austenitic,annealed,85,35,60,110,VG,P,G
+304,austenitic,cold worked,110,75,55,90,VG,P,G
+310,austenitic,annealed,95,45,50,110,G,P,G
+347,austenitic,annealed,90,35,50,110,VG,P,G
+347,austenitic,cold worked,110,65,40,,VG,P,G
+384,austenitic,annealed,75,35,55,,E,,
+410,martensitic,annealed,75,40,35,90,F,F-,F
+410,martensitic,cold worked,105,85,17,75,F,F-,F
+410,martensitic,heat treated,115,85,23,80,F,F-,F
+414,martensitic,annealed,115,90,20,50,,F,F
+414,martensitic,cold worked,130,110,15,,,F,F
+414,martensitic,heat treated,160,125,17,45,,F,F
+416,martensitic,annealed,75,40,30,70,P,G,P
+416,martensitic,cold worked,100,85,13,20,P,G,P
+416,martensitic,heat treated,110,85,18,25,P,G,P
+431,martensitic,annealed,125,95,20,50,,P-,F
+431,martensitic,cold worked,130,110,15,,,P-,F
+431,martensitic,heat treated,165,125,17,40,,P-,F
+440,martensitic,annealed,105,60,14,2,,VP,P
+440,martensitic,cold worked,115,90,7,2,,VP,P
+440,martensitic,heat treated,260,240,3,2,,VP,P
+430,ferritic,annealed,75,43,27,,G,F-G,F
+430,ferritic,cold worked,83,63,20,,G,F-G,F
+446,ferritic,annealed,83,53,23,2,P,F,F
+446,ferritic,cold worked,85,70,20,,P,F,F
