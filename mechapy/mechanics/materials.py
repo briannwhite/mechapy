@@ -8,12 +8,11 @@ import numpy as np
 import mechapy.units as units
 
 METAL_TENSILE_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'metal_mat_props.csv')
-#NONMETAL_MAT_PROPS = os.path.join(os.path.dirname(__file__), 'nonmetal_mat_props.csv')
 BASE_METAL_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'base_metal_props.csv')
 
 
 class CustomMetal(object):
-    # TODO: complete docstrings and units
+    """Placeholder for class that can be built into add() method of registries"""
     def __init__(self, name, density, mod_elast, mod_rigid, poissons_ratio):
         self.base_metal = name
         self.density = density
@@ -21,9 +20,6 @@ class CustomMetal(object):
         self.mod_rigid = mod_rigid
         self.poissons_ratio = poissons_ratio
 
-class CustomMetal(object):
-    def __init__(self, density):
-        pass  #TODO: work into add() methods of registries
 
 class BaseMetalRegistry(object):
     def __init__(self, unit='SI'):
@@ -35,20 +31,24 @@ class BaseMetalRegistry(object):
             mat = Metal(base_mat_alloy=metal, unit=unit)
             setattr(self, attr_name, mat)
 
-    # TODO : figure out how to handle checking multi part units
     def add_base_metal(self, base_metal, density, modulus_elasticity, modulus_rigidity, poissons_ratio):
-        self.density = density  # TODO: confirm units
-        self.modulus_elasticity = modulus_elasticity
-        self.modulus_rigidity = modulus_rigidity
-        self.poissons_ratio = poissons_ratio
-        self.base_metal = base_metal
+        metal = Metal(base_metal, density, modulus_elasticity, modulus_rigidity, poissons_ratio)
+        setattr(self, base_metal, metal)
 
     def tolist(self):
         metals = [metal for metal in list(self.__dict__.keys()) if not metal.startswith('_')]
         return metals
 
-class CarbonSteelRegistry(object):
 
+class CarbonSteelRegistry(object):
+    """Container of CarbonSteel instances available in library registry
+
+    Parameters
+    ----------
+    unit : str, optional
+        Default = 'SI"
+        Allowable values: 'SI' or 'Imperial'
+    """
     def __init__(self, unit='SI'):
         C_STEEL_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'steel_tensile_props.csv')
         df = pd.read_csv(C_STEEL_PROPS)
@@ -60,6 +60,14 @@ class CarbonSteelRegistry(object):
             setattr(self, attr_name, mat)
 
 class StainlessSteelRegistry(object):
+    """Container of StainlessSteel instances available in library registry
+
+    Parameters
+    ----------
+    unit : str, optional
+        Default = 'SI"
+        Allowable values: 'SI' or 'Imperial'
+    """
     def __init__(self, unit='SI'):
         S_STEEL_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'ss_tensile_props.csv')
         df = pd.read_csv(S_STEEL_PROPS)
@@ -105,13 +113,13 @@ class Metal(object):
         mat_props.index = mat_props['metal']
         select_mat = mat_props.loc[base_mat_alloy].to_dict()
         if unit == 'SI':
-            self.density = select_mat['rho'] * (units.newtons / units.kilogram) # TODO: confirm units
+            self.density = select_mat['rho'] * (units.newtons / units.kilogram)
             self.modulus_elasticity = select_mat['e_gpa'] * units.gigapascal
             self.modulus_rigidity = select_mat['g_gpa'] * units.gigapascal
         else:
-            self.density = select_mat['w'] * (units.lbm / units.cu_ft) # TODO: confirm units
+            self.density = select_mat['w'] * (units.lbm / units.cu_ft)
             self.modulus_elasticity = select_mat['e_mpsi'] * units.megapsi
-            self.modulus_rigidity = select_mat['g_mpsi'] * units.megap
+            self.modulus_rigidity = select_mat['g_mpsi'] * units.megapsi
         self.poissons_ratio = select_mat['nu']
         self.base_metal = select_mat['metal']
         # self.coeff_therm_exp_si = select_mat['alpha_microc']
@@ -181,18 +189,17 @@ class CarbonSteel(object):
             self.density = select_mat['rho'] * (units.kg / units.cu_m)
             self.tensile_strength = props['ts_mpa'] * units.megapascal
             self.yield_strength = props['ys_mpa'] * units.megapascal
-            self.izod_impact_j = props['izod_impact_j'] * units.joule
+            self.izod_impact = props['izod_impact_j'] * units.joule
             self.modulus_elasticity = select_mat['e_gpa'] * units.gigapascal
             self.modulus_rigidity = select_mat['g_gpa'] * units.gigapascal
             self.coeff_therm_exp = select_mat['alpha_microc'] # TODO: add units
         elif unit == 'Imperial':
-            self.density = select_mat['w'] * (units.lbm / units.cu_in) # TODO: confirm units
+            self.density = select_mat['w'] * (units.lbm / units.cu_in)
             self.tensile_strength = props['ts_ksi'] * units.ksi
             self.yields_strength = props['ys_ksi'] * units.ksi
-            # TODO: add imperial izod
+            self.izod_impact = (props['izod_impact_j'] * units.joules).to(units.ftlb)
             self.modulus_elasticity = select_mat['e_mpsi'] * units.megapsi
             self.modulus_rigidity = select_mat['g_mpsi'] * units.megapsi
-            # TODO: add imperial thermal expansion
 
 
 class StainlessSteel(object):
@@ -284,15 +291,58 @@ class StainlessSteel(object):
 
 class DuctileIron(object):
     def __init__(self, grade):
-        pass  # TODO: fill out this class
+        pass
 
 class GrayCastIron(object):
-    def __init__(self, grade):
-        pass  # TODO: fill out this class
+    def __init__(self, astm, unit='SI'):
+        astm_specs = [20, 25, 30, 35, 40, 50, 60]
+        if astm not in astm_specs:
+            raise ValueError('Invalid ASTM specification number. Must be member of ' +
+                             str(astm_specs))
+        if unit not in ['SI', 'Imperial']:
+            raise NameError("'unit' arg must equal 'SI' or 'Imperial'")
+
+        # Grade-specific tensile properties
+        GRAY_IRON_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'graycastiron_tensile_props.csv')
+        df = pd.read_csv(GRAY_IRON_PROPS)
+        props = df.loc[(df['astm'] == astm)].to_dict(orient='records')[0]
+
+        # Generic Gray Cast Iron Properties
+        mat_props = pd.read_csv(BASE_METAL_PROPS)
+        mat_props.index = mat_props['metal']
+        select_mat = mat_props.loc['Gray Cast Iron'].to_dict()
+
+        self.astm = astm
+        self.base_metal = select_mat['metal']
+        self.h_b = props['h_b']
+        if unit == 'SI':
+            self.density = select_mat['rho'] * (units.kg / units.cu_m)
+            self.tensile_strength = props['ts_mpa'] * units.megapascal
+            self.compressive_strength = props['cs_mpa'] * units.megapascal
+            self.rev_bending_fatigue_lim = props['rev_bending_fat_limit_mpa'] * units.megapascal
+            self.min_tensile_modulus = props['min_tensile_mod_gpa'] * units.GPa
+            self.max_tensile_modulus = props['max_tensile_mod_gpa'] * units.GPa
+            self.min_torsional_modulus = props['min_torsional_mod_gpa'] * units.GPa
+            self.max_torsional_modulus = props['max_torsional_mod_gpa'] * units.GPa
+            self.modulus_elasticity = select_mat['e_gpa'] * units.gigapascal
+            self.modulus_rigidity = select_mat['g_gpa'] * units.gigapascal
+        elif unit == 'Imperial':
+            self.density = select_mat['w'] * (units.lbm / units.cu_in)
+            self.tensile_strength = props['ts_ksi'] * units.ksi
+            self.compressive_strength = props['cs_mpa'] * units.megapascal
+            self.rev_bending_fatigue_lim = props['rev_bending_fat_limit_mpa'] * units.ksi
+            self.min_tensile_modulus = props['min_tensile_mod_mpsi'] * units.megapsi
+            self.max_tensile_modulus = props['max_tensile_mod_mpsi'] * units.megapsi
+            self.min_torsional_modulus = props['min_torsional_mod_mpsi'] * units.megapsi
+            self.max_torsional_modulus = props['max_torsional_mod_mpsi'] * units.megapsi
+            self.modulus_elasticity = select_mat['e_mpsi'] * units.megapsi
+            self.modulus_rigidity = select_mat['g_mpsi'] * units.megapsi
+
 
 class WroughtAluminum(object):
     def __init__(self, grade):
-        pass  # TODO: fill out this class
+        pass
+
 
 class CastAluminum(object):
     def __init__(self, grade):
@@ -302,6 +352,7 @@ if __name__ == '__main__':
     generic_carbon_steel = Metal('Carbon Steel')
     specific_carbon_steel = CarbonSteel()
     specific_stainless_steel = StainlessSteel()
+    specific_cast_iron = GrayCastIron(25)
     base_registry = BaseMetalRegistry()
     cs_registry = CarbonSteelRegistry()
     ss_registry = StainlessSteelRegistry()
