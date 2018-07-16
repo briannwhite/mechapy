@@ -294,6 +294,7 @@ class Shaft(object):
         mass = mass_rod(self.diameter, self.length, density)
 
     def mass_moment_inertiz_iyiz(self):
+        pass
 
     def apply_transverse_end_load(self, magnitude):
         pass
