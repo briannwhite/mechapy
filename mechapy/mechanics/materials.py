@@ -259,6 +259,7 @@ class Metal(object):
             self.density = select_mat['w'] * (units.lbm / units.cu_ft)
             self.mod_elast = select_mat['e_mpsi'] * units.megapsi
             self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
+
         self.poissons_ratio = select_mat['nu']
         self.base_metal = select_mat['metal']
         # self.coeff_therm_exp_si = select_mat['alpha_microc']
