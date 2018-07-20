@@ -2,9 +2,11 @@
 
 import pint
 
+# Some units conventions will override typical pythonic naming
 # pylint: disable=invalid-name
 
 ureg = pint.UnitRegistry()
+Q_ = ureg.Quantity
 
 # distance
 mm = ureg.milliliter
@@ -67,3 +69,8 @@ joule = joules = J = ureg.joule
 kilojoule = kilojoules = kJ = ureg.kilojoule
 ftlb = footpound = footpounds = ureg.foot * ureg.force_pound
 inlb = inchpound = inchpounds = ureg.inch * ureg.force_pound
+
+# temperature
+degF = ureg.degF
+degC = ureg.degC
+degK = ureg.degK
