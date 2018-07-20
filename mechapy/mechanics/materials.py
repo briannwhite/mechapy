@@ -11,14 +11,81 @@ METAL_TENSILE_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'metal_mat
 BASE_METAL_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'base_metal_props.csv')
 
 
-class CustomMetal(object):
-    """Placeholder for class that can be built into add() method of registries"""
-    def __init__(self, name, density, mod_elast, mod_rigid, poissons_ratio):
-        self.base_metal = name
+class CustomMaterial(object):
+    """Base material class, which covers metals and nonmetals
+
+    Parameters
+    ----------
+    name : str
+    density : Quantity
+        [mass] / [volume]
+    tensile_strength : Quantity
+        [force] / [length] ** 2
+    mod_elast : Quantity
+        [force] / [length] ** 2
+        Modulus of elasticity (or flexural modulus for polymer
+
+    Other Notes
+    -----------
+    Use keyword arguments to freely add any other useful attributes
+    """
+    def __init__(self, name, density, tensile_strength, mod_elast, **kwargs):
+        self.name = name
         self.density = density
+        self.tensile_strength = tensile_strength
         self.mod_elast = mod_elast
-        self.mod_rigid = mod_rigid
+        for key, value in kwargs.values():
+            setattr(self, key, value)
+
+
+class CustomMetal(CustomMaterial):
+    """Placeholder for class that can be built into add() method of registries
+
+    Parameters
+    ----------
+    name : str
+    density : Quantity
+        [mass] / [volume]
+    mod_elast : Quantity
+        [force] / [area]
+        Modulus of elasticity
+    tensile_strength : Quantity
+        [force] / [area]
+    poissons_ratio : float
+        Poisson's ratio (unitless)
+
+    Other Notes
+    -----------
+    Use keyword arguments to freely add any other useful attributes
+    """
+    def __init__(self, name, density, mod_elast, tensile_strength, poissons_ratio,
+                 **kwargs):
+        super().__init__(self, name, density, tensile_strength, mod_elast)
         self.poissons_ratio = poissons_ratio
+        for key, value in kwargs.values():
+            setattr(self, key, value)
+
+class CustomPolymer(object):
+    """Placeholder for class that can be built into add() method of registries
+
+    Parameters
+    ----------
+    name : str
+    density : Quantity
+        [mass] / [volume]
+    mod_elast : Quantity
+        [force] / [area]
+        Modulus of elasticity
+    tensile_strength : Quantity
+        [force] / [area]
+    poissons_ratio : float
+        Poisson's ratio (unitless)
+
+    Other Notes
+    -----------
+    Use keyword arguments to freely add any other useful attributes
+    """
+
 
 
 class BaseMetalRegistry(object):
@@ -80,14 +147,86 @@ class StainlessSteelRegistry(object):
                                  unit=unit)
             setattr(self, attr_name, mat)
 
+class PolymerRegistry(object):
+    """Container of Polymer instances available in library registry
+
+    Parameters
+    ----------
+    unit : str, optional
+        Default = 'SI"
+        Allowable values: 'SI' or 'Imperial'
+    """
+    def __init__(self, unit='SI'):
+        POLYMER_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'polymer_props.csv')
+        df = pd.read_csv(POLYMER_PROPS)
+
+        for idx in df.index:
+            record = df.iloc[idx].to_dict()
+            attr_name = (record['base_resin'] + '_' + record['reinforcement'])\
+                .lower()\
+                .replace(' ', '_')\
+                .replace('/', '')
+            mat = Polymer(record['base_resin'], record['reinforcement'], unit=unit)
+            setattr(self, attr_name, mat)
+
+class Polymer(object):
+    """Contains attributes that are common or average to polymers (resins)
+
+    This class depends on an in-package CSV data set. A non-registered polymer
+    can be constructed with minimum properties by 'CustomPolymer' class
+
+    Parameters
+    ----------
+    name : str
+        Must be member of the following:
+        ['ABS', 'Acetal', 'PTFE', 'Nylon 6/12', 'Polycarbonate', 'Polyester', 'Polyethylene', 'Polypropylene',
+         'Polystyrene']
+    reinforced : bool, optional
+        Default=False, but if True, values are typical of 30% glass reinforcement
+    """
+    def __init__(self, name, reinforced, unit='SI'):
+        POLYMER_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'polymer_props.csv')
+        df = pd.read_csv(POLYMER_PROPS)
+        polymers = ['ABS', 'Acetal', 'PTFE', 'Nylon 6/12', 'Polycarbonate', 'Polyester', 'Polyethylene',
+                    'Polypropylene', 'Polystyrene']
+        if name not in polymers:
+            raise NameError("'name' arg must be member of " + str(polymers))
+        if reinforced:
+            reinforcement = 'glass reinforced'
+        else:
+            reinforcement = 'unreinforced'
+        props = df.loc[(df['base_resin'] == name) &
+                       (df['reinforcement'] == reinforcement)].to_dict(orient='records')[0]
+        self.name = name
+        self.reinforced = reinforced
+        self.tensile_strength = props['tensile_strength_ksi'] * units.ksi
+        self.mod_flex = props['flexural_modulus_mpsi'] * units.megapsi
+        self.izod_impact_notched = props['izod_impact_notched'] * (units.ftlb / units.inch)
+        self.izod_impact_unnotched = props['izod_impact_unnotched'] * (units.ftlb / units.inch)
+        self.specific_gravity = props['specific_gravity']
+        self.mold_shrinkage = props['mold_shrinkage_pct']
+        self.water_absorption_24h = props['water_absorption_24h']
+        #self.thermal_exp = units.Q_(props['thermal_exp_e-5F'] * (10 ** -5), units.degF ** -1)
+        self.deflection_temp = units.Q_(props['deflection_temp_f_264psi'], units.degF)
+        if unit == 'SI':
+            self.tensile_strength = self.tensile_strength.to(units.megapascal)
+            self.mod_flex = self.mod_flex.to(units.gigapascal)
+            self.izod_impact_notched = self.izod_impact_notched.to(units.newtons)
+            self.izod_impact_unnotched = self.izod_impact_unnotched.to(units.newtons)
+            # self.thermal_exp = self.thermal_exp.to(units.degC ** -1)  # Need to work out conversion
+            self.deflection_temp = self.deflection_temp.to(units.degC)
+
 class Metal(object):
     """Contains attributes that are common or average to base material, e.g. steel or aluminum
 
+    This class depends on an in-package CSV data set. A non-registered base metal
+    can be cr
+
     Attributes
     ----------
-    modulus_elasticity : Quantity
+    mod_elast : Quantity
         Modulus of elasticity "E" in metric units GPa
-    modulus_rigidity : Quantity
+    mod_rigid : Quantity
         Modulus of rigidity "G" in metric units GPa
     density : Quantity
     poissons_ratio : float
@@ -114,12 +253,13 @@ class Metal(object):
         select_mat = mat_props.loc[base_mat_alloy].to_dict()
         if unit == 'SI':
             self.density = select_mat['rho'] * (units.newtons / units.kilogram)
-            self.modulus_elasticity = select_mat['e_gpa'] * units.gigapascal
-            self.modulus_rigidity = select_mat['g_gpa'] * units.gigapascal
+            self.mod_elast = select_mat['e_gpa'] * units.gigapascal
+            self.mod_rigid = select_mat['g_gpa'] * units.gigapascal
         else:
             self.density = select_mat['w'] * (units.lbm / units.cu_ft)
-            self.modulus_elasticity = select_mat['e_mpsi'] * units.megapsi
-            self.modulus_rigidity = select_mat['g_mpsi'] * units.megapsi
+            self.mod_elast = select_mat['e_mpsi'] * units.megapsi
+            self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
+
         self.poissons_ratio = select_mat['nu']
         self.base_metal = select_mat['metal']
         # self.coeff_therm_exp_si = select_mat['alpha_microc']
@@ -190,16 +330,16 @@ class CarbonSteel(object):
             self.tensile_strength = props['ts_mpa'] * units.megapascal
             self.yield_strength = props['ys_mpa'] * units.megapascal
             self.izod_impact = props['izod_impact_j'] * units.joule
-            self.modulus_elasticity = select_mat['e_gpa'] * units.gigapascal
-            self.modulus_rigidity = select_mat['g_gpa'] * units.gigapascal
+            self.mod_elast = select_mat['e_gpa'] * units.gigapascal
+            self.mod_rigid = select_mat['g_gpa'] * units.gigapascal
             self.coeff_therm_exp = select_mat['alpha_microc'] # TODO: add units
         elif unit == 'Imperial':
             self.density = select_mat['w'] * (units.lbm / units.cu_in)
             self.tensile_strength = props['ts_ksi'] * units.ksi
             self.yields_strength = props['ys_ksi'] * units.ksi
             self.izod_impact = (props['izod_impact_j'] * units.joules).to(units.ftlb)
-            self.modulus_elasticity = select_mat['e_mpsi'] * units.megapsi
-            self.modulus_rigidity = select_mat['g_mpsi'] * units.megapsi
+            self.mod_elast = select_mat['e_mpsi'] * units.megapsi
+            self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
 
 
 class StainlessSteel(object):
@@ -276,15 +416,15 @@ class StainlessSteel(object):
         if unit == 'Imperial':
             self.tensile_strength = props['uts_ksi'] * units.ksi
             self.yield_strength = props['sy_ksi'] * units.ksi
-            self.modulus_elasticity = select_mat['e_mpsi'] * units.megapsi
-            self.modulus_rigidity = select_mat['g_mpsi'] * units.megapsi
+            self.mod_elast = select_mat['e_mpsi'] * units.megapsi
+            self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
             self.density = select_mat['w'] * units.lbm / units.cu_in
             self.izod_impact = props['izod'] * units.ftlb
         else:
             self.tensile_strength = (props['uts_ksi'] * units.ksi).to(units.MPa)
             self.yield_strength = (props['sy_ksi'] * units.ksi).to(units.MPa)
-            self.modulus_elasticity = select_mat['e_gpa'] * units.gigapascal
-            self.modulus_rigidity = select_mat['g_gpa'] * units.gigapascal
+            self.mod_elast = select_mat['e_gpa'] * units.gigapascal
+            self.mod_rigid = select_mat['g_gpa'] * units.gigapascal
             self.density = select_mat['rho'] * units.kilogram / units.cu_m
             self.izod_impact = (props['izod'] * units.ftlb).to(units.joules)
         # self.coeff_therm_exp_si = select_mat['alpha_microc']
@@ -324,8 +464,8 @@ class GrayCastIron(object):
             self.max_tensile_modulus = props['max_tensile_mod_gpa'] * units.GPa
             self.min_torsional_modulus = props['min_torsional_mod_gpa'] * units.GPa
             self.max_torsional_modulus = props['max_torsional_mod_gpa'] * units.GPa
-            self.modulus_elasticity = select_mat['e_gpa'] * units.gigapascal
-            self.modulus_rigidity = select_mat['g_gpa'] * units.gigapascal
+            self.mod_elast = select_mat['e_gpa'] * units.gigapascal
+            self.mod_rigid = select_mat['g_gpa'] * units.gigapascal
         elif unit == 'Imperial':
             self.density = select_mat['w'] * (units.lbm / units.cu_in)
             self.tensile_strength = props['ts_ksi'] * units.ksi
@@ -335,8 +475,8 @@ class GrayCastIron(object):
             self.max_tensile_modulus = props['max_tensile_mod_mpsi'] * units.megapsi
             self.min_torsional_modulus = props['min_torsional_mod_mpsi'] * units.megapsi
             self.max_torsional_modulus = props['max_torsional_mod_mpsi'] * units.megapsi
-            self.modulus_elasticity = select_mat['e_mpsi'] * units.megapsi
-            self.modulus_rigidity = select_mat['g_mpsi'] * units.megapsi
+            self.mod_elast = select_mat['e_mpsi'] * units.megapsi
+            self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
 
 
 class WroughtAluminum(object):
@@ -353,12 +493,16 @@ if __name__ == '__main__':
     specific_carbon_steel = CarbonSteel()
     specific_stainless_steel = StainlessSteel()
     specific_cast_iron = GrayCastIron(25)
+    specific_polymer = Polymer('ABS', False)
     base_registry = BaseMetalRegistry()
     cs_registry = CarbonSteelRegistry()
     ss_registry = StainlessSteelRegistry()
+    polymer_registry = PolymerRegistry()
     print(generic_carbon_steel.__dict__)
     print(specific_carbon_steel.__dict__)
     print(specific_stainless_steel.__dict__)
+    print(specific_polymer.__dict__)
     print(base_registry.__dict__)
     print(ss_registry.__dict__)
     print(cs_registry.__dict__)
+    print(polymer_registry.__dict__)

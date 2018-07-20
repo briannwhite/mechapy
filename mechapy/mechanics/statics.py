@@ -283,7 +283,21 @@ class StressTensor(object):
                 )
             plt.show()
 
-class Shaft(object):
+class RoundBar(object):
+    """Round bar object with methods for various stresses and sectional properties
+
+    Parameters
+    ----------
+    diameter : Quantity
+        [length]
+    length : Quantity
+        [length]
+    material : Material or dict
+        If dict, requires following keys with corresponding units
+            'density', 'elastic_modulus'
+
+    """
+
     def __init__(self, diameter, length, material):
         self.diameter = diameter
         self.length = length
@@ -293,7 +307,7 @@ class Shaft(object):
         density = self.material.density
         mass = mass_rod(self.diameter, self.length, density)
 
-    def mass_moment_inertiz_iyiz(self):
+    def mass_moment_inertia_iyiz(self):
         pass
 
     def apply_transverse_end_load(self, magnitude):
