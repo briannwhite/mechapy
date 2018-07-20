@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>mechapy.mechanics package &#8212; mechapy 0.1.0.dev1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0.dev1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mechapy-mechanics-package">
+<h1>mechapy.mechanics package<a class="headerlink" href="#mechapy-mechanics-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mechapy.mechanics.mass_props">
+<span id="mechapy-mechanics-mass-props-module"></span><h2>mechapy.mechanics.mass_props module<a class="headerlink" href="#module-mechapy.mechanics.mass_props" title="Permalink to this headline">¶</a></h2>
+<p>Mass and moments of inertia calculations of homogeneous solids</p>
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.ix_cyl">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">ix_cyl</code><span class="sig-paren">(</span><em>mass</em>, <em>outer_dia</em>, <em>inner_dia=&lt;Quantity(0</em>, <em>'inch')&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.ix_cyl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.ix_disk">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">ix_disk</code><span class="sig-paren">(</span><em>mass</em>, <em>diameter</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.ix_disk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.ix_rect_prism">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">ix_rect_prism</code><span class="sig-paren">(</span><em>mass</em>, <em>length</em>, <em>width</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.ix_rect_prism" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.iy_rect_prism">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">iy_rect_prism</code><span class="sig-paren">(</span><em>mass</em>, <em>length</em>, <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.iy_rect_prism" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.iyiz_cyl">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">iyiz_cyl</code><span class="sig-paren">(</span><em>mass</em>, <em>outer_dia</em>, <em>length</em>, <em>inner_dia=&lt;Quantity(0</em>, <em>'inch')&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.iyiz_cyl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.iyiz_disk">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">iyiz_disk</code><span class="sig-paren">(</span><em>mass</em>, <em>diameter</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.iyiz_disk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.iyiz_rod">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">iyiz_rod</code><span class="sig-paren">(</span><em>mass</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.iyiz_rod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Iy and Iz mass moments of inertia for rod. Args require units.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mass</strong> : Quantity</p>
+<blockquote>
+<div><p>[mass]</p>
+</div></blockquote>
+<p><strong>length</strong> : Quantity</p>
+<blockquote class="last">
+<div><p>[length]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.iz_rect_prism">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">iz_rect_prism</code><span class="sig-paren">(</span><em>mass</em>, <em>width</em>, <em>height</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.iz_rect_prism" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.mass_cyl">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">mass_cyl</code><span class="sig-paren">(</span><em>outer_dia</em>, <em>length</em>, <em>density</em>, <em>inner_dia=&lt;Quantity(0</em>, <em>'inch')&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.mass_cyl" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.mass_disk">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">mass_disk</code><span class="sig-paren">(</span><em>diameter</em>, <em>thickness</em>, <em>density</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.mass_disk" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.mass_rect_prism">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">mass_rect_prism</code><span class="sig-paren">(</span><em>length</em>, <em>width</em>, <em>height</em>, <em>density</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.mass_rect_prism" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.mass_props.mass_rod">
+<code class="descclassname">mechapy.mechanics.mass_props.</code><code class="descname">mass_rod</code><span class="sig-paren">(</span><em>diameter</em>, <em>length</em>, <em>density</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.mass_props.mass_rod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mass of a rod. Args require units.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>diameter</strong> : Quantity</p>
+<blockquote>
+<div><p>[length]</p>
+</div></blockquote>
+<p><strong>length</strong> : Quantity</p>
+<blockquote>
+<div><p>[length]</p>
+</div></blockquote>
+<p><strong>density</strong> : Quantity</p>
+<blockquote>
+<div><p>[mass]/[volume]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote class="last">
+<div><p>[mass]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>mass = (math.pi * diameter ** 2 * length * density) / 4</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mechapy.mechanics.materials">
+<span id="mechapy-mechanics-materials-module"></span><h2>mechapy.mechanics.materials module<a class="headerlink" href="#module-mechapy.mechanics.materials" title="Permalink to this headline">¶</a></h2>
+<p>Contains content for engineering materials</p>
+<dl class="class">
+<dt id="mechapy.mechanics.materials.BaseMetalRegistry">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">BaseMetalRegistry</code><span class="sig-paren">(</span><em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.BaseMetalRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="mechapy.mechanics.materials.BaseMetalRegistry.add_base_metal">
+<code class="descname">add_base_metal</code><span class="sig-paren">(</span><em>base_metal</em>, <em>density</em>, <em>modulus_elasticity</em>, <em>modulus_rigidity</em>, <em>poissons_ratio</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.BaseMetalRegistry.add_base_metal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.materials.BaseMetalRegistry.tolist">
+<code class="descname">tolist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.BaseMetalRegistry.tolist" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.CarbonSteel">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">CarbonSteel</code><span class="sig-paren">(</span><em>aisi=1015</em>, <em>treatment='As-rolled'</em>, <em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.CarbonSteel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Contains strength attributes for common carbon steel types</p>
+<p>Constructed with default args, instantiates a 1015 as-rolled carbon steel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>aisi</strong> : int, optional</p>
+<blockquote>
+<div><p>Default = 1015
+One of following: {1015, 1020, 1030, 1040, 1050, 1095, 1118, 3140, 4130, 4140, 4340, 6150,</p>
+<blockquote>
+<div><p>8650, 8740, 9255}</p>
+</div></blockquote>
+</div></blockquote>
+<p><strong>treatment</strong> : str, optional</p>
+<blockquote>
+<div><p>Default = ‘As-rolled’
+One of following: {‘As-rolled’, ‘Normalized’, ‘Annealed’}</p>
+</div></blockquote>
+<p><strong>unit</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Default = ‘SI’
+Allowable values: ‘SI’ or ‘Imperial’</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>tensile_strength</strong></td>
+<td>(float &lt;Quantity&gt;) Tensile strength in corresponding units</td>
+</tr>
+<tr class="row-even"><td><strong>yield_strength</strong></td>
+<td>(float &lt;Quantity&gt;) Yield strength in corresponding units</td>
+</tr>
+<tr class="row-odd"><td><strong>elongation_pct</strong></td>
+<td>(float) Percentage elongation</td>
+</tr>
+<tr class="row-even"><td><strong>area_reduction</strong></td>
+<td>(float) Reduction area</td>
+</tr>
+<tr class="row-odd"><td><strong>brinell_hardness</strong></td>
+<td>(float) Brinell hardness value</td>
+</tr>
+<tr class="row-even"><td><strong>izod_impact</strong></td>
+<td>(float &lt;Quantity&gt;) Izod impact in corresponding joules</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.CarbonSteelRegistry">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">CarbonSteelRegistry</code><span class="sig-paren">(</span><em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.CarbonSteelRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Container of CarbonSteel instances available in library registry</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>unit</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Default = ‘SI”
+Allowable values: ‘SI’ or ‘Imperial’</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.CastAluminum">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">CastAluminum</code><span class="sig-paren">(</span><em>grade</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.CastAluminum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.CustomMaterial">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">CustomMaterial</code><span class="sig-paren">(</span><em>name</em>, <em>density</em>, <em>tensile_strength</em>, <em>mod_elast</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.CustomMaterial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Base material class, which covers metals and nonmetals</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
+<p><strong>density</strong> : Quantity</p>
+<blockquote>
+<div><p>[mass] / [volume]</p>
+</div></blockquote>
+<p><strong>tensile_strength</strong> : Quantity</p>
+<blockquote>
+<div><p>[force] / [length] ** 2</p>
+</div></blockquote>
+<p><strong>mod_elast</strong> : Quantity</p>
+<blockquote class="last">
+<div><p>[force] / [length] ** 2
+Modulus of elasticity (or flexural modulus for polymer</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.CustomMetal">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">CustomMetal</code><span class="sig-paren">(</span><em>name</em>, <em>density</em>, <em>mod_elast</em>, <em>tensile_strength</em>, <em>poissons_ratio</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.CustomMetal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mechapy.mechanics.materials.CustomMaterial" title="mechapy.mechanics.materials.CustomMaterial"><code class="xref py py-class docutils literal"><span class="pre">mechapy.mechanics.materials.CustomMaterial</span></code></a></p>
+<p>Placeholder for class that can be built into add() method of registries</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
+<p><strong>density</strong> : Quantity</p>
+<blockquote>
+<div><p>[mass] / [volume]</p>
+</div></blockquote>
+<p><strong>mod_elast</strong> : Quantity</p>
+<blockquote>
+<div><p>[force] / [area]
+Modulus of elasticity</p>
+</div></blockquote>
+<p><strong>tensile_strength</strong> : Quantity</p>
+<blockquote>
+<div><p>[force] / [area]</p>
+</div></blockquote>
+<p><strong>poissons_ratio</strong> : float</p>
+<blockquote class="last">
+<div><p>Poisson’s ratio (unitless)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.CustomPolymer">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">CustomPolymer</code><a class="headerlink" href="#mechapy.mechanics.materials.CustomPolymer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Placeholder for class that can be built into add() method of registries</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
+<p><strong>density</strong> : Quantity</p>
+<blockquote>
+<div><p>[mass] / [volume]</p>
+</div></blockquote>
+<p><strong>mod_elast</strong> : Quantity</p>
+<blockquote>
+<div><p>[force] / [area]
+Modulus of elasticity</p>
+</div></blockquote>
+<p><strong>tensile_strength</strong> : Quantity</p>
+<blockquote>
+<div><p>[force] / [area]</p>
+</div></blockquote>
+<p><strong>poissons_ratio</strong> : float</p>
+<blockquote class="last">
+<div><p>Poisson’s ratio (unitless)</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.DuctileIron">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">DuctileIron</code><span class="sig-paren">(</span><em>grade</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.DuctileIron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.GrayCastIron">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">GrayCastIron</code><span class="sig-paren">(</span><em>astm</em>, <em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.GrayCastIron" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.Metal">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">Metal</code><span class="sig-paren">(</span><em>base_mat_alloy</em>, <em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.Metal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Contains attributes that are common or average to base material, e.g. steel or aluminum</p>
+<p>This class depends on an in-package CSV data set. A non-registered base metal
+can be cr</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>base_mat_alloy</strong> : str</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>Base material. Allowable values = {‘Aluminum’, ‘Beryl Copper’, ‘Brass’, ‘Bronze’, ‘Copper’,</dt>
+<dd><p class="first last">‘Gray Cast Iron’, ‘Magnesium’, ‘Nickel’, ‘Carbon Steel’,
+‘Alloy Steel’, ‘Stainless Steel’, ‘Titanium’, ‘Zinc’}</p>
+</dd>
+</dl>
+</div></blockquote>
+<p><strong>units</strong> : str</p>
+<blockquote class="last">
+<div><p>default = ‘SI’
+Allowable values: ‘SI’ or ‘Imperial’</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="76%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>mod_elast</strong></td>
+<td>(Quantity) Modulus of elasticity “E” in metric units GPa</td>
+</tr>
+<tr class="row-even"><td><strong>mod_rigid</strong></td>
+<td>(Quantity) Modulus of rigidity “G” in metric units GPa</td>
+</tr>
+<tr class="row-odd"><td><strong>density</strong></td>
+<td>(Quantity)</td>
+</tr>
+<tr class="row-even"><td><strong>poissons_ratio</strong></td>
+<td>(float)</td>
+</tr>
+<tr class="row-odd"><td><strong>base_metal</strong></td>
+<td>(str)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.Polymer">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">Polymer</code><span class="sig-paren">(</span><em>name</em>, <em>reinforced</em>, <em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.Polymer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Contains attributes that are common or average to polymers (resins)</p>
+<p>This class depends on an in-package CSV data set. A non-registered polymer
+can be constructed with minimum properties by ‘CustomPolymer’ class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>name</strong> : str</p>
+<blockquote>
+<div><p>Must be member of the following:
+[‘ABS’, ‘Acetal’, ‘PTFE’, ‘Nylon 6/12’, ‘Polycarbonate’, ‘Polyester’, ‘Polyethylene’, ‘Polypropylene’,</p>
+<blockquote>
+<div><p>‘Polystyrene’]</p>
+</div></blockquote>
+</div></blockquote>
+<p><strong>reinforced</strong> : bool, optional</p>
+<blockquote class="last">
+<div><p>Default=False, but if True, values are typical of 30% glass reinforcement</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.PolymerRegistry">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">PolymerRegistry</code><span class="sig-paren">(</span><em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.PolymerRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Container of Polymer instances available in library registry</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>unit</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Default = ‘SI”
+Allowable values: ‘SI’ or ‘Imperial’</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.StainlessSteel">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">StainlessSteel</code><span class="sig-paren">(</span><em>aisi=302</em>, <em>structure='austenitic'</em>, <em>treatment='annealed'</em>, <em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.StainlessSteel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Contains strength attributes for common stainless steel types</p>
+<p>Constructed with default args, instantiates AISI 302 austenitic stainless steel</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>aisi</strong> : int, optional</p>
+<blockquote>
+<div><p>Default = 1015
+One of following: {302, 303, 304, 310, 347, 384, 410, 414, 416, 431, 440, 430, 446}</p>
+</div></blockquote>
+<p><strong>treatment</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Default = ‘As-rolled’
+One of following: {‘As-rolled’, ‘Normalized’, ‘Annealed’}</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>aisi</strong></td>
+<td>(int) AISI specification</td>
+</tr>
+<tr class="row-even"><td><strong>structure</strong></td>
+<td>(str) Metallic microstructure, e.g., ‘austenitic’, ‘martensitic’, ‘ferritic’</td>
+</tr>
+<tr class="row-odd"><td><strong>treatment</strong></td>
+<td>(str) One of ‘anneled’, ‘cold worked’, heat treated’</td>
+</tr>
+<tr class="row-even"><td><strong>tensile_strength</strong></td>
+<td>(float &lt;Quantity&gt;) Ultimate tensile strength in corresponding units</td>
+</tr>
+<tr class="row-odd"><td><strong>yield_strength</strong></td>
+<td>(float &lt;Quantity&gt;) Yield strength in corresponding units</td>
+</tr>
+<tr class="row-even"><td><strong>elongation</strong></td>
+<td>(float &lt;Quantity&gt;) Elongation in percentage</td>
+</tr>
+<tr class="row-odd"><td><strong>izod_impact</strong></td>
+<td>(float &lt;Quantity&gt;) Izod impact in corresponding units</td>
+</tr>
+<tr class="row-even"><td><strong>durability</strong></td>
+<td>(str) VP, P, F, G, VG = Very Poor, Poor, Fair, Good, Very Good</td>
+</tr>
+<tr class="row-odd"><td><strong>machinability</strong></td>
+<td>(str) VP, P, F, G, VG = Very Poor, Poor, Fair, Good, Very Good</td>
+</tr>
+<tr class="row-even"><td><strong>weldability</strong></td>
+<td>(str) VP, P, F, G, VG = Very Poor, Poor, Fair, Good, Very Good</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.StainlessSteelRegistry">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">StainlessSteelRegistry</code><span class="sig-paren">(</span><em>unit='SI'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.StainlessSteelRegistry" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Container of StainlessSteel instances available in library registry</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>unit</strong> : str, optional</p>
+<blockquote class="last">
+<div><p>Default = ‘SI”
+Allowable values: ‘SI’ or ‘Imperial’</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.materials.WroughtAluminum">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.materials.</code><code class="descname">WroughtAluminum</code><span class="sig-paren">(</span><em>grade</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.materials.WroughtAluminum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mechapy.mechanics.sections">
+<span id="mechapy-mechanics-sections-module"></span><h2>mechapy.mechanics.sections module<a class="headerlink" href="#module-mechapy.mechanics.sections" title="Permalink to this headline">¶</a></h2>
+<p>Mass and moments of inertia calculations of homogeneous solids</p>
+<dl class="class">
+<dt id="mechapy.mechanics.sections.Circle">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.sections.</code><code class="descname">Circle</code><span class="sig-paren">(</span><em>diameter</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.sections.Circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>2D circle section with attributes for common area properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>diameter</strong> : diameter</p>
+<blockquote class="last">
+<div><p>[length]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">meter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">circ</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">meter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">circ</span><span class="o">.</span><span class="n">moment_inertia</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">modulus</span> <span class="o">=</span> <span class="n">circ</span><span class="o">.</span><span class="n">section_modulus</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>area</strong></td>
+<td>(Quantity) [area]</td>
+</tr>
+<tr class="row-even"><td><strong>moment_intertia</strong></td>
+<td>(Quantity) [length ** 4]</td>
+</tr>
+<tr class="row-odd"><td><strong>section_modulus</strong></td>
+<td>(Quantity) [length ** 3]</td>
+</tr>
+<tr class="row-even"><td><strong>polar_moment_inertia</strong></td>
+<td>(Quantity) [length ** 4]</td>
+</tr>
+<tr class="row-odd"><td><strong>radius_gyration</strong></td>
+<td>(Quantity) [length]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.sections.Rectangle">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.sections.</code><code class="descname">Rectangle</code><span class="sig-paren">(</span><em>height</em>, <em>base</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.sections.Rectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>2D rectangle section with attributes for common area properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>height</strong> : Quantity</p>
+<blockquote>
+<div><p>[length]</p>
+</div></blockquote>
+<p><strong>base</strong> : Quantity</p>
+<blockquote class="last">
+<div><p>[length]</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">meter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rect</span> <span class="o">=</span> <span class="n">Rectangle</span><span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">meter</span><span class="p">,</span> <span class="mf">0.25</span> <span class="o">*</span> <span class="n">meter</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">moment_inertia</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">modulus</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">section_modulus</span>
+</pre></div>
+</div>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="44%" />
+<col width="56%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>area</strong></td>
+<td>(Quantity) [area]</td>
+</tr>
+<tr class="row-even"><td><strong>moment_intertia</strong></td>
+<td>(Quantity) [length ** 4]</td>
+</tr>
+<tr class="row-odd"><td><strong>section_modulus</strong></td>
+<td>(Quantity) [length ** 3]</td>
+</tr>
+<tr class="row-even"><td><strong>radius_gyration</strong></td>
+<td>(Quantity) [length]</td>
+</tr>
+<tr class="row-odd"><td><strong>centroidal_dist</strong></td>
+<td>(Quantity) [length]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.sections.RolledSection">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.sections.</code><code class="descname">RolledSection</code><span class="sig-paren">(</span><em>designation</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.sections.RolledSection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.sections.rolled_sections_df">
+<code class="descclassname">mechapy.mechanics.sections.</code><code class="descname">rolled_sections_df</code><span class="sig-paren">(</span><em>kind='all'</em>, <em>units='all'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.sections.rolled_sections_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns dataframe of rolled sections, with optional filtering by section category</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>kind</strong> : str, optional</p>
+<blockquote>
+<div><p>Default = ‘all’
+May include any combination of ‘w’, ‘s’, ‘c’, and ‘l’ (not case sensitive)
+These correspond to W-shapes, S-shapes, channel and angle sections, respectively
+For example: ‘wsc’, ‘SL’</p>
+</div></blockquote>
+<p><strong>units</strong> : str: optional</p>
+<blockquote class="last">
+<div><p>Default = ‘all’
+Other allowable values: {‘mm’, ‘inch’}</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mechapy.mechanics.statics">
+<span id="mechapy-mechanics-statics-module"></span><h2>mechapy.mechanics.statics module<a class="headerlink" href="#module-mechapy.mechanics.statics" title="Permalink to this headline">¶</a></h2>
+<p>Contains functions for basic stress computation</p>
+<dl class="class">
+<dt id="mechapy.mechanics.statics.RectangleBeam">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">RectangleBeam</code><a class="headerlink" href="#mechapy.mechanics.statics.RectangleBeam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.statics.RoundBar">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">RoundBar</code><span class="sig-paren">(</span><em>diameter</em>, <em>length</em>, <em>material</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Round bar object with methods for various stresses and sectional properties</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>diameter</strong> : Quantity</p>
+<blockquote>
+<div><p>[length]</p>
+</div></blockquote>
+<p><strong>length</strong> : Quantity</p>
+<blockquote>
+<div><p>[length]</p>
+</div></blockquote>
+<p><strong>material</strong> : Material or dict</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>If dict, requires following keys with corresponding units</dt>
+<dd><p class="first last">‘density’, ‘elastic_modulus’</p>
+</dd>
+</dl>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.apply_axial_load">
+<code class="descname">apply_axial_load</code><span class="sig-paren">(</span><em>magnitude</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.apply_axial_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.apply_torsion_load">
+<code class="descname">apply_torsion_load</code><span class="sig-paren">(</span><em>magniude</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.apply_torsion_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.apply_transverse_end_load">
+<code class="descname">apply_transverse_end_load</code><span class="sig-paren">(</span><em>magnitude</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.apply_transverse_end_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.mass">
+<code class="descname">mass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.mass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.mass_moment_inertia_iyiz">
+<code class="descname">mass_moment_inertia_iyiz</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.mass_moment_inertia_iyiz" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.remove_axial_load">
+<code class="descname">remove_axial_load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.remove_axial_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.remove_torsion">
+<code class="descname">remove_torsion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.remove_torsion" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.remove_transverse_load">
+<code class="descname">remove_transverse_load</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.remove_transverse_load" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.sigma_max">
+<code class="descname">sigma_max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.sigma_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.tau_avg">
+<code class="descname">tau_avg</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.tau_avg" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.RoundBar.tau_max">
+<code class="descname">tau_max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.RoundBar.tau_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.statics.StressTensor">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">StressTensor</code><span class="sig-paren">(</span><em>sigma_x</em>, <em>sigma_y</em>, <em>tau_xy</em>, <em>theta=0</em>, <em>sigma_z=None</em>, <em>tau_yz=None</em>, <em>tau_zx=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<dl class="method">
+<dt id="mechapy.mechanics.statics.StressTensor.matrix">
+<code class="descname">matrix</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor.matrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.StressTensor.plot_mohrs_circle">
+<code class="descname">plot_mohrs_circle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor.plot_mohrs_circle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.StressTensor.sigma_1">
+<code class="descname">sigma_1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor.sigma_1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.StressTensor.sigma_2">
+<code class="descname">sigma_2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor.sigma_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.StressTensor.sigma_n">
+<code class="descname">sigma_n</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor.sigma_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.StressTensor.tau_max">
+<code class="descname">tau_max</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor.tau_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="mechapy.mechanics.statics.StressTensor.tau_n">
+<code class="descname">tau_n</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.StressTensor.tau_n" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.statics.ThickWallCylinder">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">ThickWallCylinder</code><a class="headerlink" href="#mechapy.mechanics.statics.ThickWallCylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.mechanics.statics.ThinWallCylinder">
+<em class="property">class </em><code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">ThinWallCylinder</code><a class="headerlink" href="#mechapy.mechanics.statics.ThinWallCylinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.statics.shear_modulus">
+<code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">shear_modulus</code><span class="sig-paren">(</span><em>modulus_elasticity</em>, <em>poisson_ratio</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.shear_modulus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shear modulus as a function modulus of elasticity and poisson’s ratio</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>modulus_elasticity</strong> : Quantity</p>
+<blockquote>
+<div><p>[pressure]
+Conventionally represented as ‘E’.</p>
+</div></blockquote>
+<p><strong>poisson_ratio</strong> : float</p>
+<blockquote>
+<div><p>For isotropic materials, typically between 0.2 and 0.5. Conventionally represented as ‘nu’.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote>
+<div><p>[pressure]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AttributeError</strong></p>
+<blockquote class="last">
+<div><p>If arguments are not passed as appropriate pint unit Quantity type</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">psi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">shear_modulus</span><span class="p">(</span><span class="mi">100000</span> <span class="o">*</span> <span class="n">psi</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="go">&lt;Quantity(40000.0, &#39;pound_force_per_square_inch&#39;)&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.statics.strain_eng">
+<code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">strain_eng</code><span class="sig-paren">(</span><em>dlength</em>, <em>length</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.strain_eng" title="Permalink to this definition">¶</a></dt>
+<dd><p>Engineering strain. The ratio of delta-length over original length.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dlength</strong> : Quantity</p>
+<blockquote>
+<div><p>[length]</p>
+</div></blockquote>
+<p><strong>length</strong> : Quantity</p>
+<blockquote>
+<div><p>[length]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote>
+<div><p>[dimensionless]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AttributeError</strong></p>
+<blockquote class="last">
+<div><p>If arguments are not passed as appropriate pint unit Quantity type</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">inch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">strain_eng</span><span class="p">(</span><span class="mf">0.02</span> <span class="o">*</span> <span class="n">inch</span><span class="p">,</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">inch</span><span class="p">)</span>
+<span class="go">&lt;Quantity(0.01, &#39;dimensionless&#39;)&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.statics.stress_eng">
+<code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">stress_eng</code><span class="sig-paren">(</span><em>load</em>, <em>area</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.stress_eng" title="Permalink to this definition">¶</a></dt>
+<dd><p>Engineering stress for uniaxial case, sigma = P/A</p>
+<p>For engineering stress, the effective area represents the <em>initial</em> cross-sectional area.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Uniaxial load on body</p>
+</div></blockquote>
+<p><strong>area</strong> : Quantity</p>
+<blockquote>
+<div><p>[area]
+Cross-sectional area, across which force is applied</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote>
+<div><p>[pressure]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AttributeError</strong></p>
+<blockquote class="last">
+<div><p>If arguments are not passed as appropriate pint unit Quantity type</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">lbf</span><span class="p">,</span> <span class="n">sq_in</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stress_eng</span><span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">lbf</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">sq_in</span><span class="p">)</span>
+<span class="go">&lt;Quantity(10.0, &#39;force_pound / square_inch&#39;)&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.statics.stress_true">
+<code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">stress_true</code><span class="sig-paren">(</span><em>load</em>, <em>area_actual</em>, <em>strain</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.stress_true" title="Permalink to this definition">¶</a></dt>
+<dd><p>True stress, which accounts for reduction in cross-sectional area under stress</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]</p>
+</div></blockquote>
+<p><strong>area_actual</strong> : Quantity</p>
+<blockquote>
+<div><p>[area]</p>
+</div></blockquote>
+<p><strong>strain</strong> : float</p>
+<blockquote>
+<div><p>Dimensionless</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AttributeError</strong></p>
+<blockquote>
+<div><p>If arguments are not passed as appropriate pint unit Quantity type</p>
+</div></blockquote>
+<p><strong>TypeError</strong></p>
+<blockquote class="last">
+<div><p>If ‘strain’ argument is passed as non-float or non-integer</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">lbf</span><span class="p">,</span> <span class="n">sq_in</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stress_true</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">lbf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">sq_in</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="go">&lt;Quantity(101.0, &#39;force_pound / square_inch&#39;)&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.statics.uts_from_brinell">
+<code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">uts_from_brinell</code><span class="sig-paren">(</span><em>h_b</em>, <em>k_b=500</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.uts_from_brinell" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate ultimate tensile strength from brinell hardness</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>h_b</strong> : Quantity</p>
+<blockquote>
+<div><p>[pressure]
+Brinell Hardness value</p>
+</div></blockquote>
+<p><strong>k_b</strong> : float or int, optional</p>
+<blockquote>
+<div><p>Constant. Default = 500, which generally applies for steels categorically</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote>
+<div><p>[pressure]
+Ultimate tensile strength</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AttributeError</strong></p>
+<blockquote class="last">
+<div><p>If arguments are not passed as appropriate pint unit Quantity type</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">lbf</span><span class="p">,</span> <span class="n">sq_in</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stress_true</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">lbf</span><span class="p">,</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">sq_in</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="go">&lt;Quantity(101.0, &#39;force_pound / square_inch&#39;)&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.mechanics.statics.ys_from_uts">
+<code class="descclassname">mechapy.mechanics.statics.</code><code class="descname">ys_from_uts</code><span class="sig-paren">(</span><em>uts</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.mechanics.statics.ys_from_uts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield strength as a function of ultimate tensile strength</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>uts</strong> : Quantity</p>
+<blockquote>
+<div><p>[pressure]
+Must be ‘psi’</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote>
+<div><p>[pressure]</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>AttributeError</strong></p>
+<blockquote class="last">
+<div><p>If arguments are not passed as appropriate pint unit Quantity type</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">mechapy.units</span> <span class="k">import</span> <span class="n">psi</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ys_from_uts</span><span class="p">(</span><span class="mi">100000</span> <span class="o">*</span> <span class="n">psi</span><span class="p">)</span>
+<span class="go">&lt;Quantity(75000.0, &#39;pound_force_per_square_inch&#39;)&gt;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mechapy.mechanics">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mechapy.mechanics" title="Permalink to this headline">¶</a></h2>
+<p>The ‘mechanics’ package contains content for numerous engineering mechanics topics</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">mechapy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Brian White.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/mechapy.mechanics.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

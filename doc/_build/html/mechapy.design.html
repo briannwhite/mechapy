@@ -1,0 +1,522 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>mechapy.design package &#8212; mechapy 0.1.0.dev1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1.0.dev1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="mechapy-design-package">
+<h1>mechapy.design package<a class="headerlink" href="#mechapy-design-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mechapy.design.bearings">
+<span id="mechapy-design-bearings-module"></span><h2>mechapy.design.bearings module<a class="headerlink" href="#module-mechapy.design.bearings" title="Permalink to this headline">¶</a></h2>
+<p>Contains object abstractions for common mechanical design components</p>
+<dl class="function">
+<dt id="mechapy.design.bearings.bearing_life_hours">
+<code class="descclassname">mechapy.design.bearings.</code><code class="descname">bearing_life_hours</code><span class="sig-paren">(</span><em>dynamic_load_rating</em>, <em>dynamic_load</em>, <em>rpm</em>, <em>kind='ball'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.bearings.bearing_life_hours" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bearing L10 calculation per ISO 281</p>
+<p>This approach to bearing life is appropriate for the general case,
+which is assumed to have some dynamic content in its loading composition.
+It represents 90% reliability.</p>
+<p>L_10h = (1000000 / (60 * rpm)) * (C / P) ** p
+Exponent “p” is 3 for ball bearings, and 3.333 for roller bearings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dynamic_load_rating</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Basic dynamic load rating, typically represented by C</p>
+</div></blockquote>
+<p><strong>dynamic_load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Equivalent dynamic bearing load, typically represented by P</p>
+</div></blockquote>
+<p><strong>rpm</strong> : Quantity</p>
+<blockquote>
+<div><p>1 / [time]
+Rotational speed in rpm</p>
+</div></blockquote>
+<p><strong>kind</strong> : str</p>
+<blockquote>
+<div><p>Default = ‘ball’
+Allowable values: ‘ball’ or ‘roller’</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float</p>
+<blockquote class="last">
+<div><p>Operating hours</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.design.bearings.bearing_life_revs">
+<code class="descclassname">mechapy.design.bearings.</code><code class="descname">bearing_life_revs</code><span class="sig-paren">(</span><em>dynamic_load_rating</em>, <em>dynamic_load</em>, <em>kind='ball'</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.bearings.bearing_life_revs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bearing L10 calculation per ISO 281</p>
+<p>This approach to bearing life is appropriate for the general case,
+which is assumed to have some dynamic content in its loading composition.
+It represents 90% reliability.</p>
+<p>L_10 = (C / P) ** p
+Exponent “p” is 3 for ball bearings, and 3.333 for roller bearings</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dynamic_load_rating</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Basic dynamic load rating, typically represented by C</p>
+</div></blockquote>
+<p><strong>dynamic_load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Equivalent dynamic bearing load, typically represented by P</p>
+</div></blockquote>
+<p><strong>kind</strong> : str</p>
+<blockquote>
+<div><p>Default = ‘ball’
+Allowable values: ‘ball’ or ‘roller’</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float</p>
+<blockquote class="last">
+<div><p>Millions of revolutions</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.design.bearings.dynamic_equiv_ax_load">
+<code class="descclassname">mechapy.design.bearings.</code><code class="descname">dynamic_equiv_ax_load</code><span class="sig-paren">(</span><em>actual_ax_load</em>, <em>actual_rad_load</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.bearings.dynamic_equiv_ax_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the dynamic equivalent axial load</p>
+<p>This is based on assumption: actual_rad_load / actual_ax_load &lt;= 0.55</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>actual_ax_load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Actual axial load</p>
+</div></blockquote>
+<p><strong>actual_rad_load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Actual radial load</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote class="last">
+<div><p>[force]
+Dynamic equivalent axial load</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="mechapy.design.bearings.dynamic_equiv_rad_load">
+<code class="descclassname">mechapy.design.bearings.</code><code class="descname">dynamic_equiv_rad_load</code><span class="sig-paren">(</span><em>actual_rad_load</em>, <em>actual_ax_load</em>, <em>rad_load_factor</em>, <em>ax_load_factor</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.bearings.dynamic_equiv_rad_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine dynamic equivalent radial load</p>
+<p>The load factors are found in bearing manufacturer tables.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>actual_rad_load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Actual radial load</p>
+</div></blockquote>
+<p><strong>actual_ax_load</strong> : Quantity</p>
+<blockquote>
+<div><p>[force]
+Actual axial load</p>
+</div></blockquote>
+<p><strong>rad_load_factor</strong> : float</p>
+<blockquote>
+<div><p>Radial load factor, found in manufacturer tables</p>
+</div></blockquote>
+<p><strong>ax_load_factor</strong> : float</p>
+<blockquote>
+<div><p>Axial load factor, found in manufacturer tables</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Quantity</p>
+<blockquote class="last">
+<div><p>[force]
+Dynamic equivalent radial load</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-mechapy.design.gears">
+<span id="mechapy-design-gears-module"></span><h2>mechapy.design.gears module<a class="headerlink" href="#module-mechapy.design.gears" title="Permalink to this headline">¶</a></h2>
+<p>Contains object abstractions for common mechanical design components</p>
+<dl class="class">
+<dt id="mechapy.design.gears.Gear">
+<em class="property">class </em><code class="descclassname">mechapy.design.gears.</code><code class="descname">Gear</code><span class="sig-paren">(</span><em>pitch_dia</em>, <em>num_teeth</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.gears.Gear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Base class for gears</p>
+<p class="rubric">Attributes</p>
+<dl class="attribute">
+<dt id="mechapy.design.gears.Gear.num_teeth">
+<code class="descname">num_teeth</code><a class="headerlink" href="#mechapy.design.gears.Gear.num_teeth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mechapy.design.gears.Gear.pitch_dia">
+<code class="descname">pitch_dia</code><a class="headerlink" href="#mechapy.design.gears.Gear.pitch_dia" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.design.gears.GearPair">
+<em class="property">class </em><code class="descclassname">mechapy.design.gears.</code><code class="descname">GearPair</code><span class="sig-paren">(</span><em>pinion</em>, <em>gear</em>, <em>driving_speed=0</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.gears.GearPair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Gear pair with optional driving speed</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pinion</strong> : SpurGear or HelicalGear</p>
+<p><strong>gear</strong> : SpurGear or HelicalGear</p>
+<p class="last"><strong>driving_speed</strong> : float &lt;radians / second&gt;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<dl class="attribute">
+<dt id="mechapy.design.gears.GearPair.driving_speed">
+<code class="descname">driving_speed</code><a class="headerlink" href="#mechapy.design.gears.GearPair.driving_speed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.design.gears.HelicalGear">
+<em class="property">class </em><code class="descclassname">mechapy.design.gears.</code><code class="descname">HelicalGear</code><span class="sig-paren">(</span><em>pitch_dia</em>, <em>num_teeth</em>, <em>thickness</em>, <em>beta</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.gears.HelicalGear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mechapy.design.gears.Gear" title="mechapy.design.gears.Gear"><code class="xref py py-class docutils literal"><span class="pre">mechapy.design.gears.Gear</span></code></a></p>
+<p class="rubric">Attributes</p>
+<p class="rubric">Methods</p>
+<dl class="class">
+<dt id="mechapy.design.gears.HelicalGear.SpurGear">
+<em class="property">class </em><code class="descname">SpurGear</code><span class="sig-paren">(</span><em>pitch_dia</em>, <em>num_teeth</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.gears.HelicalGear.SpurGear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mechapy.design.gears.Gear" title="mechapy.design.gears.Gear"><code class="xref py py-class docutils literal"><span class="pre">mechapy.design.gears.Gear</span></code></a></p>
+<p>Class with derived attributes for helical gear geometry</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>diametral_pitch</strong></td>
+<td>(Quantity) [length] Number of teeth per pitch diameter, commonly represented as ‘P’</td>
+</tr>
+<tr class="row-even"><td><strong>norm_diametral_pitch</strong></td>
+<td>(Quantity) [length] Normal diametral pitch = P / cos(beta)</td>
+</tr>
+<tr class="row-odd"><td><strong>thickness</strong></td>
+<td>(Quantity) [length] Gear thickness</td>
+</tr>
+<tr class="row-even"><td><strong>circular_pitch</strong></td>
+<td>(Quantity) [length] pi / P</td>
+</tr>
+<tr class="row-odd"><td><strong>norm_circular_pitch</strong></td>
+<td>(Quantity) [length] Normal circular pitch = P_c * cos(beta)</td>
+</tr>
+<tr class="row-even"><td><strong>axial_pitch</strong></td>
+<td>(Quantity) [length] Axial pitch = P_c / tan(beta)</td>
+</tr>
+<tr class="row-odd"><td><strong>addendum</strong></td>
+<td>(Quantity) [length] 1 / P</td>
+</tr>
+<tr class="row-even"><td><strong>norm_module</strong></td>
+<td>(Quantity) [length] Normal module = 1 / (P * cos(beta))</td>
+</tr>
+<tr class="row-odd"><td><strong>dedendum</strong></td>
+<td>(Quantity) [length] 1.25 / P</td>
+</tr>
+<tr class="row-even"><td><strong>dedendum_shaved</strong></td>
+<td>(Quantity) [length] 1.35 / P</td>
+</tr>
+<tr class="row-odd"><td><strong>working_depth</strong></td>
+<td>(Quantity) [length] 2 / P</td>
+</tr>
+<tr class="row-even"><td><strong>whole_depth</strong></td>
+<td>(Quantity) [length] 2.25 / P</td>
+</tr>
+<tr class="row-odd"><td><strong>whole_depth_shaved</strong></td>
+<td>(Quantity) [length] 2.35 / P</td>
+</tr>
+<tr class="row-even"><td><strong>clearance</strong></td>
+<td>(Quantity) [length] 0.25 / P</td>
+</tr>
+<tr class="row-odd"><td><strong>clearance_shaved</strong></td>
+<td>(Quantity) [length] 0.35 / P</td>
+</tr>
+<tr class="row-even"><td><strong>outside_dia</strong></td>
+<td>(Quantiy) [length] (N + 2) / P</td>
+</tr>
+<tr class="row-odd"><td><strong>root_dia</strong></td>
+<td>(Quantity) [length] (N - 2.5) / P</td>
+</tr>
+<tr class="row-even"><td><strong>root_dia_shaved</strong></td>
+<td>(Quantity) [length] (N - 2.7) / P</td>
+</tr>
+<tr class="row-odd"><td><strong>circular_thickness_basic</strong></td>
+<td>(Quantity) [length] 1.5708 / P</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mechapy.design.gears.HelicalGear.beta">
+<code class="descname">beta</code><a class="headerlink" href="#mechapy.design.gears.HelicalGear.beta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Beta getter</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="mechapy.design.gears.HelicalGear.num_teeth">
+<code class="descname">num_teeth</code><a class="headerlink" href="#mechapy.design.gears.HelicalGear.num_teeth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mechapy.design.gears.HelicalGear.pitch_dia">
+<code class="descname">pitch_dia</code><a class="headerlink" href="#mechapy.design.gears.HelicalGear.pitch_dia" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.design.gears.ReductionShaft">
+<em class="property">class </em><code class="descclassname">mechapy.design.gears.</code><code class="descname">ReductionShaft</code><span class="sig-paren">(</span><em>pinion</em>, <em>gear=None</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.gears.ReductionShaft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Container for a pinion/gear pair, using Gear class</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pinion</strong> : Gear</p>
+<blockquote>
+<div><p>Driving component (typically smaller in size)</p>
+</div></blockquote>
+<p><strong>gear</strong> : Gear, optional</p>
+<blockquote class="last">
+<div><p>Driven component</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>pinion</strong></td>
+<td>(Gear)</td>
+</tr>
+<tr class="row-even"><td><strong>gear</strong></td>
+<td>(Gear)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="mechapy.design.gears.SpurGear">
+<em class="property">class </em><code class="descclassname">mechapy.design.gears.</code><code class="descname">SpurGear</code><span class="sig-paren">(</span><em>pitch_dia</em>, <em>num_teeth</em>, <em>thickness</em><span class="sig-paren">)</span><a class="headerlink" href="#mechapy.design.gears.SpurGear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#mechapy.design.gears.Gear" title="mechapy.design.gears.Gear"><code class="xref py py-class docutils literal"><span class="pre">mechapy.design.gears.Gear</span></code></a></p>
+<p>Class with derived attributes for spur gear geometry</p>
+<p class="rubric">Attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>diametral_pitch</strong></td>
+<td>(Quantity) [length] Number of teeth per pitch diameter, commonly represented as ‘P’</td>
+</tr>
+<tr class="row-even"><td><strong>thickness</strong></td>
+<td>(Quantity) [length] Gear thickness</td>
+</tr>
+<tr class="row-odd"><td><strong>circular_pitch</strong></td>
+<td>(Quantity) [length] pi / P</td>
+</tr>
+<tr class="row-even"><td><strong>addendum</strong></td>
+<td>(Quantity) [length] 1 / P</td>
+</tr>
+<tr class="row-odd"><td><strong>dedendum</strong></td>
+<td>(Quantity) [length] 1.25 / P</td>
+</tr>
+<tr class="row-even"><td><strong>dedendum_shaved</strong></td>
+<td>(Quantity) [length] 1.35 / P</td>
+</tr>
+<tr class="row-odd"><td><strong>working_depth</strong></td>
+<td>(Quantity) [length] 2 / P</td>
+</tr>
+<tr class="row-even"><td><strong>whole_depth</strong></td>
+<td>(Quantity) [length] 2.25 / P</td>
+</tr>
+<tr class="row-odd"><td><strong>whole_depth_shaved</strong></td>
+<td>(Quantity) [length] 2.35 / P</td>
+</tr>
+<tr class="row-even"><td><strong>clearance</strong></td>
+<td>(Quantity) [length] 0.25 / P</td>
+</tr>
+<tr class="row-odd"><td><strong>clearance_shaved</strong></td>
+<td>(Quantity) [length] 0.35 / P</td>
+</tr>
+<tr class="row-even"><td><strong>outside_dia</strong></td>
+<td>(Quantiy) [length] (N + 2) / P</td>
+</tr>
+<tr class="row-odd"><td><strong>root_dia</strong></td>
+<td>(Quantity) [length] (N - 2.5) / P</td>
+</tr>
+<tr class="row-even"><td><strong>root_dia_shaved</strong></td>
+<td>(Quantity) [length] (N - 2.7) / P</td>
+</tr>
+<tr class="row-odd"><td><strong>circular_thickness_basic</strong></td>
+<td>(Quantity) [length] 1.5708 / P</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="mechapy.design.gears.SpurGear.num_teeth">
+<code class="descname">num_teeth</code><a class="headerlink" href="#mechapy.design.gears.SpurGear.num_teeth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="mechapy.design.gears.SpurGear.pitch_dia">
+<code class="descname">pitch_dia</code><a class="headerlink" href="#mechapy.design.gears.SpurGear.pitch_dia" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="mechapy-design-springs-module">
+<h2>mechapy.design.springs module<a class="headerlink" href="#mechapy-design-springs-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-mechapy.design">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mechapy.design" title="Permalink to this headline">¶</a></h2>
+<p>Package for machine design elements</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">mechapy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Brian White.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/mechapy.design.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
