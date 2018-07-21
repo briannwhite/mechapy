@@ -256,7 +256,7 @@ class Metal(object):
             self.mod_elast = select_mat['e_gpa'] * units.gigapascal
             self.mod_rigid = select_mat['g_gpa'] * units.gigapascal
         else:
-            self.density = select_mat['w'] * (units.lbm / units.cu_ft)
+            self.density = select_mat['w'] * (units.lb / units.cu_ft)
             self.mod_elast = select_mat['e_mpsi'] * units.megapsi
             self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
 
@@ -334,7 +334,7 @@ class CarbonSteel(object):
             self.mod_rigid = select_mat['g_gpa'] * units.gigapascal
             self.coeff_therm_exp = select_mat['alpha_microc'] # TODO: add units
         elif unit == 'Imperial':
-            self.density = select_mat['w'] * (units.lbm / units.cu_in)
+            self.density = select_mat['w'] * (units.lb / units.cu_in)
             self.tensile_strength = props['ts_ksi'] * units.ksi
             self.yields_strength = props['ys_ksi'] * units.ksi
             self.izod_impact = (props['izod_impact_j'] * units.joules).to(units.ftlb)
@@ -418,7 +418,7 @@ class StainlessSteel(object):
             self.yield_strength = props['sy_ksi'] * units.ksi
             self.mod_elast = select_mat['e_mpsi'] * units.megapsi
             self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
-            self.density = select_mat['w'] * units.lbm / units.cu_in
+            self.density = select_mat['w'] * units.lb / units.cu_in
             self.izod_impact = props['izod'] * units.ftlb
         else:
             self.tensile_strength = (props['uts_ksi'] * units.ksi).to(units.MPa)
@@ -467,7 +467,7 @@ class GrayCastIron(object):
             self.mod_elast = select_mat['e_gpa'] * units.gigapascal
             self.mod_rigid = select_mat['g_gpa'] * units.gigapascal
         elif unit == 'Imperial':
-            self.density = select_mat['w'] * (units.lbm / units.cu_in)
+            self.density = select_mat['w'] * (units.lb / units.cu_in)
             self.tensile_strength = props['ts_ksi'] * units.ksi
             self.compressive_strength = props['cs_mpa'] * units.megapascal
             self.rev_bending_fatigue_lim = props['rev_bending_fat_limit_mpa'] * units.ksi
