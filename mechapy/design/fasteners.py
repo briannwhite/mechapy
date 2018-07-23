@@ -71,17 +71,23 @@ class UnifiedThreadRegistry(object):
         UST_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'unified_screw_threads.csv')
         df = pd.read_csv(UST_PROPS)
         names = df['size'].tolist()
+        self.names = names
         classes = df['fit_class'].tolist()
         for name, fitclass in zip(names, classes): # TODO: figure this out
             thread = UnifiedScrewThread(name, fitclass)
             attr_name = 'thread_' + (name + '_' + fitclass)\
                 .replace('-', '_')\
                 .replace(' ', '_')\
+                .replace('/','_')\
                 .lower()
             setattr(self, attr_name, thread)
 
     def add_custom_thread(self, props):
         pass
+
+    def __len__(self):
+        length = len(self.names)
+        return length
 
 class MetricThreadRegistry(object):
     """Registry for common external metric threads
@@ -91,17 +97,18 @@ class MetricThreadRegistry(object):
     >>> mreg = MetricThreadRegistry()
     """
     def __init__(self):
-        UST_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'unified_screw_threads.csv')
-        df = pd.read_csv(UST_PROPS)
+        MT_PROPS = os.path.join(os.path.dirname(__file__), 'data', 'metric_screw_threads.csv')
+        df = pd.read_csv(MT_PROPS)
         names = df['size'].tolist()
-        classes = df['fit_class'].tolist()
-        for name, fitclass in zip(names, classes):
-            thread = UnifiedScrewThread(name, fitclass)
-            attr_name = 'thread_' + (name + '_' + fitclass)\
-                .replace('-', '_')\
-                .replace(' ', '_')\
-                .lower()
+        self.names = names
+        for name in names:
+            thread = MetricThread(name)
+            attr_name = name.replace(' ', '_').replace('.','_').lower()
             setattr(self, attr_name, thread)
+
+    def __len__(self):
+        length = len(self.names)
+        return length
 
 class SteelScrewGrade(object):
     """Common class for imperial and SI steel screw SAE grades
