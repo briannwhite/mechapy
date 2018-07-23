@@ -25,7 +25,7 @@ hour = hours = ureg.hour
 day = days = ureg.day
 
 # mass
-lbm = ureg.pound
+lb = lbs = pound = pounds = ureg.pound
 kilogram = kg = kilgrams = ureg.kilogram
 
 # Force
