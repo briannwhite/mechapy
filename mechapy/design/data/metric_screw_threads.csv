@@ -1,4 +1,4 @@
-﻿size,pitch,major_dia,minor_dia,stress_area_mm2
+﻿size,pitch,major_dia,minor_dia,stress_area
 M3 X 0.5,0.5,3,2.39,5.03
 M3.5 X 0.6,0.6,3.5,2.76,6.78
 M4 X 0.7,0.7,4,3.14,8.78

@@ -429,9 +429,9 @@ class StainlessSteel(object):
             self.izod_impact = (props['izod'] * units.ftlb).to(units.joules)
         # self.coeff_therm_exp_si = select_mat['alpha_microc']
 
-class DuctileIron(object):
-    def __init__(self, grade):
-        pass
+# class DuctileIron(object):
+#     def __init__(self, grade):
+#         pass
 
 class GrayCastIron(object):
     def __init__(self, astm, unit='SI'):
@@ -478,15 +478,14 @@ class GrayCastIron(object):
             self.mod_elast = select_mat['e_mpsi'] * units.megapsi
             self.mod_rigid = select_mat['g_mpsi'] * units.megapsi
 
-
-class WroughtAluminum(object):
-    def __init__(self, grade):
-        pass
-
-
-class CastAluminum(object):
-    def __init__(self, grade):
-        pass
+# class WroughtAluminum(object):
+#     def __init__(self, grade):
+#         pass
+#
+#
+# class CastAluminum(object):
+#     def __init__(self, grade):
+#         pass
 
 if __name__ == '__main__':
     generic_carbon_steel = Metal('Carbon Steel')
